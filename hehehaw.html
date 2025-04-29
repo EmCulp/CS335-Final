@@ -20,22 +20,32 @@
         </style>
     </head>
     <body>
-        <h1 id="header1">This is not the page you're looking for</h1>
+        <h1 id="header1" class="hidden">This is not the page you're looking for</h1>
         <h2 id="header2" class="hidden">...but if it were, it might look a little something like this:</h2>
-        <div id="videoContainer" class="hidden">
-            <video width="720" height="405" autoplay>
-                <source src="mustafar_scene.mp4" type="video/mp4">
-            </video>
-        </div>
+        <video id="mustafarVideo" class="hidden" width="720" height="405" autoplay muted controls>
+            <source src="fixed_output.mp4" type="video/mp4">
+        </video>
         <script>
             setTimeout(() => {
-                //document.getElementById("header1").classList.add("hidden");
+                document.getElementById("header1").classList.remove("hidden");
+            }, 0);
+            setTimeout(() => {
                 document.getElementById("header2").classList.remove("hidden");
             }, 5000);
 
             setTimeout(() =>{
-                document.getElementById("videoContainer").classList.remove("hidden");
-            }, 10000);
+                const video = document.getElementById("mustafarVideo");
+                document.getElementById("mustafarVideo").classList.remove("hidden");
+            
+                document.body.addEventListener("click", () => {
+                    if(!video.muted){
+                        video.muted = true;
+                        video.volume = 1.0;
+                        video.play();
+                    }
+                });
+            }, 6000);
+            
         </script>
      </body>
 </html>
