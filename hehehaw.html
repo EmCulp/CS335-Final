@@ -10,17 +10,32 @@
                 padding-top: 50px;
                 background-color: black;
                 color: yellow;
-            }
+            }a
             iframe{
                 margin-top: 20px;
+            }
+            .hidden{
+                display: none;
             }
         </style>
     </head>
     <body>
-        <h1>This is not the page you're looking for</h1>
-        <h2>...but if it were, it might look a little something like this:</h2>
-        <video width="720" height="405" autoplay muted controls>
-            <source src="mustafar_scene.mp4" type="video/mp4">
-        </video>
+        <h1 id="header1">This is not the page you're looking for</h1>
+        <h2 id="header2" class="hidden">...but if it were, it might look a little something like this:</h2>
+        <div id="videoContainer" class="hidden">
+            <video width="720" height="405" autoplay muted controls>
+                <source src="mustafar_scene.mp4" type="video/mp4">
+            </video>
+        </div>
+        <script>
+            setTimeout(() => {
+                //document.getElementById("header1").classList.add("hidden");
+                document.getElementById("header2").classList.remove("hidden");
+            }, 5000);
+
+            setTimeout(() =>{
+                document.getElementById("videoContainer").classList.remove("hidden");
+            }, 10000);
+        </script>
      </body>
 </html>
